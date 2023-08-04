@@ -9,6 +9,8 @@
     "sourceType": "module"
   },
   "rules": {
-    "quotes": "off"
+    "quotes": "off",
+    "class-methods-use-this": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }
