@@ -9,6 +9,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "no-param-reassign": "off",
     "quotes": "off",
     "comma-dangle": "off",
     "class-methods-use-this": "off",
