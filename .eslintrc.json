@@ -9,6 +9,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "operator-linebreak": "off",
     "no-plusplus": "off",
     "no-param-reassign": "off",
     "quotes": "off",
