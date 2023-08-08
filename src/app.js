@@ -5,6 +5,7 @@ import express from "express";
 import homeRouter from "./routes/home";
 import userRoute from "./routes/user";
 import tokenRoutes from "./routes/token";
+import uploadsRouter from "./routes/uploads";
 
 import "./database";
 
@@ -23,9 +24,10 @@ class App {
   }
 
   routes() {
+    this.app.use("/uploads/", uploadsRouter);
     this.app.use("/", homeRouter);
     this.app.use("/users/", userRoute);
-    this.app.use("/token", tokenRoutes);
+    this.app.use("/token/", tokenRoutes);
   }
 }
 
