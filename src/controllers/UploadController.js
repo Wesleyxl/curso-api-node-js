@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import multer from "multer";
 import multerConfig from "../config/multer";
 import File from "../models/File";
@@ -15,20 +16,27 @@ const upload = multer(multerConfig).single("file");
 class UploadsController {
   store(req, res) {
     return upload(req, res, async (error) => {
-      if (error) {
-        return res.status(400).json({
-          errors: [error.code],
+      try {
+        if (error) {
+          return res.status(400).json({
+            errors: [error.code],
+          });
+        }
+
+        const { originalname, filename } = req.file;
+        const { student_id } = req.body;
+        const file = await File.create({
+          student_id,
+          original_name: originalname,
+          file_name: filename,
+        });
+
+        return res.json(file);
+      } catch (e) {
+        res.status(400).json({
+          errors: e.errors.map((err) => err.message),
         });
       }
-
-      const { originalname, filename } = req.file;
-      const { student_id } = req.body;
-      const file = await File.create({
-        original_name: originalname,
-        file_name: filename,
-      });
-
-      return res.json(file);
     });
   }
 }

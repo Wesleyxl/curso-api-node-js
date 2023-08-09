@@ -1,3 +1,4 @@
+import { resolve } from "path";
 import dotenv from "dotenv";
 import express from "express";
 
@@ -21,6 +22,7 @@ class App {
   middleware() {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
+    this.app.use(express.static(resolve(__dirname, "..", "uploads")));
   }
 
   routes() {

@@ -9,6 +9,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "camelcase": "off",
     "operator-linebreak": "off",
     "no-plusplus": "off",
     "no-param-reassign": "off",
